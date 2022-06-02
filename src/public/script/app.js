@@ -1,10 +1,15 @@
-var slides = document.querySelectorAll(".main-banner-slide");
-var btns = document.querySelectorAll(".main-banner-btn");
-var categoryLeft = document.querySelectorAll(".category__left-item");
-var btnLike = document.querySelector(".home-product-item__icon-like");
-var collapseCategoryLeft = document.getElementsByClassName("collapsible"); 
+const slides = document.querySelectorAll(".main-banner-slide");
+const btns = document.querySelectorAll(".main-banner-btn");
+const categoryLeft = document.querySelectorAll(".category__left-item");
+const btnLike = document.querySelector(".home-product-item__icon-like");
+const collapseCategoryLeft = document.getElementsByClassName("collapsible"); 
+const bigImg = document.querySelector('.detail-product-left__img .detail-product-left__big-img')
 let currentSlide = currentCate = 1;
 
+
+function showImg(pic) {
+    bigImg.src = pic;
+}
 
 var manualNav = function(manual) {
     slides.forEach((slide) => {
@@ -67,7 +72,6 @@ btnLike.addEventListener("click", function(e) {
     e.preventDefault();
     this.classList.toggle("btnLike");
 });
-
 for( var i = 0; i < collapseCategoryLeft.length; i++){
     collapseCategoryLeft[i].addEventListener("click", function() {
         var content = this.nextElementSibling;
@@ -78,6 +82,8 @@ for( var i = 0; i < collapseCategoryLeft.length; i++){
         } 
     })
 }
+
+
 
 
 

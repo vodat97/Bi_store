@@ -1,21 +1,19 @@
 const Product = require('../models/product');
 const { singleMongooseToObject } = require('../../mongooseObjects/mongoose');
+const { mutipleMongooseToObject} = require('../../mongooseObjects/mongoose');
 
 class ProductController {
-    // [GET] /product/create
-    create(req, res, next) {
-        res.render('product/create');
+    // [GET] product/detailProduct
+    detailProduct(req, res, next) {
+        Product.findOne({ slug: req.params.slug })
+            .then((product) => {
+                //res.json(product);
+                res.render('product/detailProduct', {product: singleMongooseToObject(product)});
+            })
+            .catch(next)
     }
-    // [POST] /product/store
-    store(req, res, next) {
-        res.json(req.body);
-        // const formData = req.body;
-        // const product = new Product(formData);
-        // product
-        //     .save()
-        //     .then(() => res.redirect('/'))
-        //     .catch((error) => {})
-    }
+
+    
 }
 
 module.exports = new ProductController();

@@ -1,0 +1,76 @@
+<div class="wrap">
+  <h2 class="form-heading">Product Manage</h2>
+  <a href="/crud/create" class="btn-add-label">
+    <i class="fa-solid fa-plus"></i>
+    Add new product
+  </a>
+  <div class="content">
+    <table class="table">
+      <thead class="thead">
+        <tr>
+          <th>#</th>
+          <th>Tên sản phẩm</th>
+          <th>Giá cũ</th>
+          <th>Giá mới</th>
+          <th>Nơi bán</th>
+          <th>Xử lý</th>
+        </tr>
+      </thead>
+      <tbody class="tbody">
+        {{#each products}}
+        <tr>
+          <td>{{sum @index 1}}</td>
+          <td>{{this.name}}</td>
+          <td>{{this.oldPrice}}đ</td>
+          <td>{{this.newPrice}}đ</td>
+          <td>{{this.origin}}</td>
+          <td class="btn-wrap">
+            <a href="/crud/{{this._id}}/edit" class="btn-edit"><i class="fa-solid fa-pen"></i></a>
+            <a href="" onclick="showPopup()" id="deleteBtn" class="btn-delete" data-id="{{this._id}}" data-toggle="modal" data-target="#modal-delete">
+              <i class="fa-solid fa-trash-can"></i>
+            </a>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+    
+  </div>
+</div>
+
+{{!-- popup delete form --}}
+
+<div id="modal-delete" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content" id="popupdel">
+    <span class="close">&times;</span>
+    <p style="margin-top: 15px;">Bạn có muốn xóa sản phẩm này?</p>
+    <div class="modal-controls">
+      <button id="delBtn">Xóa</button>
+      <button id="cancelBtn">Hủy</button>
+    </div>
+  </div>
+
+</div>
+<form name="delete-form" method="POST"></form>
+<script>
+  
+    var productId;
+    var deleteForm = document.forms['delete-form'];
+    var btndelete = document.getElementById('delBtn');
+
+    $('.btn-delete').on('click', function(e) { 
+      e.preventDefault();
+      productId = $(this).attr('data-id');
+      console.log(productId);
+      //alert("ID:" + productId);
+    })
+    btndelete.onclick = function(){
+        console.log(productId);
+        deleteForm.action = '/crud/' + productId + '?_method=DELETE';
+        deleteForm.submit();
+    }
+
+  
+</script>

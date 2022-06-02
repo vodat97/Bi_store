@@ -13,7 +13,12 @@ const product = new Schema(
         saled: {type: String, maxlength: 100},
         origin: {type: String, maxlength: 255},
         saleOff: {type: String, maxlength: 100},
-        image: {type: String, maxlength: 300}
+        reviews:{type: String, maxlength: 100},
+        image_1: {type: String, maxlength: 300},
+        image_2: {type: String, maxlength: 300},
+        image_3: {type: String, maxlength: 300},
+        image_4: {type: String, maxlength: 300},
+        slug: {type: String, slug: 'name', unique: true}
     },
     {
         timestamps: true

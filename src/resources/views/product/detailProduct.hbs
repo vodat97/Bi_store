@@ -1,0 +1,103 @@
+<div class="detail-product-wrap">
+    <div class="detail-product">
+        <div class="detail-product-left">
+            <div class="detail-product-left__img">
+                <img src="{{product.image_1}}" alt="" class="detail-product-left__big-img">
+            </div>
+            <div class="detail-product-left__img-slide">
+                <div class="detail-product-left__img-small-item">
+                    <img src="{{product.image_1}}" onclick="showImg(this.src)" alt="" class="detail-product-left-img-small">
+                </div>
+                <div class="detail-product-left__img-small-item">
+                    <img src="{{product.image_2}}" onclick="showImg(this.src)" alt="" class="detail-product-left-img-small">
+                </div>
+                <div class="detail-product-left__img-small-item">
+                    <img src="{{product.image_3}}" onclick="showImg(this.src)" alt="" class="detail-product-left-img-small">
+                </div>
+                <div class="detail-product-left__img-small-item">
+                    <img src="{{product.image_4}}" onclick="showImg(this.src)" alt="" class="detail-product-left-img-small">
+                </div>
+            </div>
+            <div class="detail-product-left__user-action">
+                <div class="detail-product-left__user-share detail-product-left__user-share--separate">
+                    <span class="detail-product-left__share-label">Chia sẻ</span>
+                    <span class="detail-product-left__share-icon">    
+                        <i class="fa-brands fa-facebook-messenger"></i>
+                        <i class="fa-brands fa-facebook icon-share"></i>
+                        <i class="fa-brands fa-twitter-square"></i>
+                    </span>
+                </div>
+                <div class="detail-product-left__user-like">
+                    <span class="detail-product-left__like">
+                        <i id="btnDetailLike" class="detail-product-left__icon-like fa-solid fa-thumbs-up"></i>
+                    </span>
+                    <span class="detail-product-left__like-label">Đã thích (5.6K)</span>
+                </div>
+            </div>
+        </div>
+        <div class="detail-product-right">
+            <div class="detail-product-right__heading">
+                <span class="detail-product-right__title">{{product.name}}</span>
+            </div>
+            <div class="detail-product-right__rating-sales-reviews">
+                <div class="detail-product-right__rating-wrap detail-product-right__rating-wrap--separate">
+                    <div class="detail-product-right__rate">
+                        <span class="detail-product-right__rate-number">3.5</span>
+                    </div>
+                    <div class="detail-product-right__rate-icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star-half-stroke"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                </div>
+                <div class="detail-product-right__reviews-wrap detail-product-right__reviews-wrap--separate">
+                    <span class="detail-product-right__reviews-number">{{product.reviews}}K</span>
+                    <span class="detail-product-right__reviews-label">Đánh giá</span>
+                </div>
+                <div class="detail-product-right__sales-wrap detail-product-right__sales-wrap--separate">
+                    <span class="detail-product-right__sales-number">{{product.saled}}K</span>
+                    <span class="detail-product-right__sales-label">Đã bán</span>
+                </div>
+            </div>
+            <div class="detail-product-right__price-sale">
+                <div class="detail-product-right__price-old">{{product.oldPrice}}đ</div>
+                <div class="detail-product-right__price-new">{{product.newPrice}}đ</div>
+                <div class="detail-product-right__price-discount">{{product.saleOff}}% GIẢM</div>
+            </div>
+            <div class="detail-product-right__information">
+                <div class="detail-product-right__information-size">
+                    <span class="detail-product-right__size-label">Size</span>
+                    <div class="detail-product-right__psize-wrap">
+                        <div class="detail-product-right__psize">S</div>
+                        <div class="detail-product-right__psize">M</div>
+                        <div class="detail-product-right__psize">L</div>
+                        <div class="detail-product-right__psize">XL</div>
+                        <div class="detail-product-right__psize">XXL</div>
+                        <div class="detail-product-right__psize">3XL</div>
+                        <div class="detail-product-right__psize">4XL</div>
+                        <div class="detail-product-right__psize">5XL</div>
+                    </div>
+                </div>
+                <div class="detail-product-right__information-quantity">
+                    <span class="detail-product-right__quantity-label">Quantity</span>
+                    <div class="detail-product-right__quantity-wrap">
+                        <button class="detail-product-right__left-btn">-</button>
+                        <div class="detail-product-right__number-wrap">
+                            <span class="detail-product-right__number">1</span>
+                        </div>
+                        <button class="detail-product-right__right-btn">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="detail-product-right__button-controls">
+                <a href="/cart" class="detail-product-right__add-to-cart">
+                    <i class="fa-solid fa-cart-plus"></i>
+                    Thêm vào giỏ hàng
+                </a>
+                <button class="detail-product-right__buy-now">Mua ngay</button>
+            </div>
+        </div>
+    </div>
+</div>
