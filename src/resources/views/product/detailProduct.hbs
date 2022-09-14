@@ -92,11 +92,11 @@
                 </div>
             </div>
             <div class="detail-product-right__button-controls">
-                <a href="/cart" class="detail-product-right__add-to-cart">
+                <a href="/cart/{{product._id}}" class="detail-product-right__add-to-cart">
                     <i class="fa-solid fa-cart-plus"></i>
                     Thêm vào giỏ hàng
                 </a>
-                <button class="detail-product-right__buy-now">Mua ngay</button>
+                <a href="/cart/{{product._id}}" class="detail-product-right__buy-now">Mua ngay</a>
             </div>
         </div>
     </div>

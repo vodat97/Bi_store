@@ -1,0 +1,16 @@
+
+<div class="wrap">
+    <h1 class="form-heading">Update Category</h1>
+    <a href="/category" class="btn-add-label">
+    <i class="fa-solid fa-angles-left"></i>
+         All Catagories
+    </a>
+    <form method="POST" action="/category/{{category._id}}?_method=PUT" class="form-crud" id="form-2">
+        <div class="form-group-crud">
+            <label class="form-label" for="title">Title</label>
+            <input id="title" name="title" type="text" class="form-control-crud" placeholder="Title" value="{{category.title}}">
+            <span class="form-message"></span>
+        </div>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+    </form>
+</div>

@@ -5,55 +5,109 @@
     <i class="fa-solid fa-angles-left"></i>
          All Products
     </a>
-    <form method="POST" action="/crud/post" class="form">
-    <div class="left">
-        <div class="form-group">
-            <label class="form-label" for="name">Product name</label>
-            <input type="text" class="form-control" id="name" name="name">
+    <form method="POST" action="/crud/post" class="form-crud" id="form-2">
+        <div class="form-group-crud">
+            <label class="form-label" for="name">Name</label>
+            <input id="name" name="name" type="text" class="form-control-crud" placeholder="Title" value="">
+            <span class="form-message"></span>
         </div>
-        <div class="form-group">
-            <label class="form-label" for="image_1">Link image 1</label>
-            <input type="text" class="form-control" id="image_1" name="image_1">
+        <div class="form-group-crud">
+            <label class="form-label" for="description">Description</label>
+            <textarea id="description" name="description" class="form-control-crud" placeholder="Description"></textarea>
+            <span class="form-message"></span>
         </div>
-        <div class="form-group">
-            <label class="form-label" for="image_2">Link image 2</label>
-            <input type="text" class="form-control" id="image_2" name="image_2">
+        <div class="form-group-crud">
+            <label class="form-label" for="category">Category</label>
+            <select name="category" class="form-control-crud">
+                {{#each categories}}
+                    <option value="{{this.title}}">{{this.title}}</option>
+                {{/each}}
+            </select>
         </div>
-        <div class="form-group">
-            <label class="form-label" for="image_3">Link image 3</label>
-            <input type="text" class="form-control" id="image_3" name="image_3">
-        </div>
-        <div class="form-group">
-            <label class="form-label" for="image_4">Link image 4</label>
-            <input type="text" class="form-control" id="image_4" name="image_4">
-        </div>
-    </div>
-    <div class="right">
-        <div class="form-group">
-            <label class="form-label" for="oldPrice">Old price</label>
-            <input type="text" class="form-control" id="oldPrice" name="oldPrice"></input>
-        </div>
-        <div class="form-group">
-            <label class="form-label" for="newPrice">New price</label>
-            <input type="text" class="form-control" id="newPrice" name="newPrice">
-        </div>
-        <div class="form-group">
-            <label class="form-label" for="saled">Saled</label>
-            <input type="text" class="form-control" id="saled" name="saled">
-        </div>
-        <div class="form-group">
+        <div class="form-group-crud">
             <label class="form-label" for="origin">Origin</label>
-            <input type="text" class="form-control" id="origin" name="origin">
+            <select name="origin" class="form-control-crud">
+                {{#each origins}}
+                    <option value="{{this.title}}">{{this.title}}</option>
+                {{/each}}
+            </select>
         </div>
-        <div class="form-group">
-            <label class="form-label" for="saleOff">SaleOff</label>
-            <input type="text" class="form-control" id="saleOff" name="saleOff">
+        <div class="form-group-crud">
+            <label class="form-label" for="oldPrice">Old Price</label>
+            <input id="oldprice" type="text" name="oldPrice" onkeyup="addDotNumber()" class="form-control-crud number" placeholder="VND" />
+            <span class="form-message"></span>
         </div>
-        <div class="form-group">
+        <div class="form-group-crud">
+            <label class="form-label" for="newPrice">New Price</label>
+            <input id="newprice" type="text" name="newPrice" onkeyup="addDotNumber()" class="form-control-crud number" placeholder="VND"/>
+            <span class="form-message"></span>
+        </div>
+        <div class="form-group-crud">
+            <label class="form-label" for="saleOff">Discount</label>
+            <input id="saleOff" type="text" name="saleOff" class="form-control-crud" placeholder="45">
+            <span class="form-message"></span>
+        </div>
+        <div class="form-group-crud">
+            <label class="form-label" for="saled">Saled</label>
+            <input id="saled" type="text" name="saled" onkeyup="addDotNumber()" class="form-control-crud number" placeholder="Saled"/>
+            <span class="form-message"></span>
+        </div>
+        <div class="form-group-crud">
             <label class="form-label" for="reviews">Reviews</label>
-            <input type="text" class="form-control" id="reviews" name="reviews">
+            <input id="reviews" type="text" name="reviews" onkeyup="addDotNumber()" class="form-control-crud number" placeholder="Reviews"/>
+            <span class="form-message"></span>
         </div>
-    </div>
-        <button type="submit" class="btn btn-primary">Add new product</button>
+
+        <div class="form-group-crud">
+            <label class="form-label" for="">Image 1</label>
+            <input id="image" type="text" name="image" class="form-control-crud" placeholder="Image"/>
+            {{!-- <input type="file" name="image" class="form-control-crud" id="img" />
+            <img src="#" alt="" id="imgPreview"> --}}
+            <span class="form-message"></span>
+        </div>
+        <div class="form-group-crud">
+            <label class="form-label" for="">Image 2</label>
+            <input id="image_1" type="text" name="image_1" class="form-control-crud" placeholder="Image"/>
+            {{!-- <input type="file" name="image" class="form-control-crud" id="img" />
+            <img src="#" alt="" id="imgPreview"> --}}
+            <span class="form-message"></span>
+        </div>
+        <div class="form-group-crud">
+            <label class="form-label" for="">Image 3</label>
+            <input id="image_2" type="text" name="image_2" class="form-control-crud" placeholder="Image"/>
+            {{!-- <input type="file" name="image" class="form-control-crud" id="img" />
+            <img src="#" alt="" id="imgPreview"> --}}
+            <span class="form-message"></span>
+        </div>
+        <div class="form-group-crud">
+            <label class="form-label" for="">Image 4</label>
+            <input id="image_3" type="text" name="image_3" class="form-control-crud" placeholder="Image"/>
+            {{!-- <input type="file" name="image" class="form-control-crud" id="img" />
+            <img src="#" alt="" id="imgPreview"> --}}
+            <span class="form-message"></span>
+        </div>
+        <div class="form-group-crud">
+            <label class="form-label" for="">Image 5</label>
+            <input id="image_4" type="text" name="image_4" class="form-control-crud" placeholder="Image"/>
+            {{!-- <input type="file" name="image" class="form-control-crud" id="img" />
+            <img src="#" alt="" id="imgPreview"> --}}
+            <span class="form-message"></span>
+        </div>
+            <button type="submit" class="btn btn-primary">Add new product</button>
     </form>
+    {{!-- <script>
+        function readURL(input){
+            if(input.files && input.files[0]){
+                var reader = new FileReader();
+                reader.onload = function(e){
+                    $('#imgPreview').attr('src', e.target.result).width(100).height(100);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $('#img').change(function() {
+            readURL(this);  
+        })
+    </script> --}}
+    
 </div>

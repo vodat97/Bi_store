@@ -5,7 +5,14 @@ const deleteBtn = document.getElementById('deleteBtn');
 const deleteBtn2 = document.getElementsByClassName('btn-delete');
 const cancelBtn = document.getElementById('cancelBtn');
 
-console.log(deleteBtn2.length);
+
+function HandleNumber(num) {
+    return num.replace(/^0+/, '').replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+function addDotNumber() {
+    var value = document.getElementsByClassName("number").value;
+    document.getElementsByClassName("number") = HandleNumber(value);
+}
 
 cancelBtn.onclick = function(){
     modal.style.display = 'none';

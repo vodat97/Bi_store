@@ -4,37 +4,57 @@
     <i class="fa-solid fa-plus"></i>
     Add new product
   </a>
+  
   <div class="content">
-    <table class="table">
+    {{#if count}}
+      <table class="table">
       <thead class="thead">
         <tr>
           <th>#</th>
           <th>Tên sản phẩm</th>
           <th>Giá cũ</th>
           <th>Giá mới</th>
-          <th>Nơi bán</th>
+          <th>Loại sản phẩm</th>
+          <th>Hình sản phẩm</th>
           <th>Xử lý</th>
         </tr>
       </thead>
       <tbody class="tbody">
-        {{#each products}}
+        {{#each Products}}
         <tr>
           <td>{{sum @index 1}}</td>
           <td>{{this.name}}</td>
           <td>{{this.oldPrice}}đ</td>
           <td>{{this.newPrice}}đ</td>
-          <td>{{this.origin}}</td>
-          <td class="btn-wrap">
-            <a href="/crud/{{this._id}}/edit" class="btn-edit"><i class="fa-solid fa-pen"></i></a>
-            <a href="" onclick="showPopup()" id="deleteBtn" class="btn-delete" data-id="{{this._id}}" data-toggle="modal" data-target="#modal-delete">
-              <i class="fa-solid fa-trash-can"></i>
-            </a>
+          <td>{{this.category}}</td>
+          <td>{{this.image}}</td>
+          {{!-- <td>
+            {{#if this.image}}
+              <img id="imglistProduct" src="/product_images/{{this._id}}/{{this.image}}" alt="">
+            {{else}}
+              <img id="imglistProduct" src="/product_images/no-image.jpg" alt="">
+            {{/if}}
+          </td> --}}
+          <td class="td-wrap">
+            <div class="btn-wrap">
+              <a href="/crud/{{this._id}}/edit" class="btn-edit"><i class="fa-solid fa-pen"></i></a>
+              <a href="" onclick="showPopup()" id="deleteBtn" class="btn-delete" data-id="{{this._id}}" data-toggle="modal" data-target="#modal-delete">
+                <i class="fa-solid fa-trash-can"></i>
+              </a>
+            </div>
           </td>
         </tr>
         {{/each}}
       </tbody>
     </table>
+    {{else}}
+      
+      <h3 style="text-align: center; font-size: 1.6rem;">There are no products</h3>
+
+      
+    {{/if}}
     
+  
   </div>
 </div>
 

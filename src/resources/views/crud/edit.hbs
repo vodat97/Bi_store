@@ -4,55 +4,79 @@
     <i class="fa-solid fa-angles-left"></i>
          All Products
     </a>
-    <form method="POST" action="/crud/{{product._id}}?_method=PUT" class="form">
-    <div class="left">
-        <div class="form-group">
-            <label class="form-label" for="name">Product name</label>
-            <input type="text" class="form-control" id="name" name="name" value="{{product.name}}">
+    <form method="POST" action="/crud/{{product._id}}?_method=PUT" class="form-crud">
+    <div class="form-group-crud">
+            <label class="form-label" for="name">Title</label>
+            <input id="name" name="name" type="text" class="form-control-crud" value="{{product.name}}">
+            <span class="form-message"></span>
         </div>
-        <div class="form-group">
-            <label class="form-label" for="image_1">Link image 1</label>
-            <input type="text" class="form-control" id="image_1" value="{{product.image_1}}" name="image_1">
+        <div class="form-group-crud">
+            <label class="form-label" for="description">Description</label>
+            <textarea id="description" name="description" class="form-control-crud">{{product.description}}</textarea>
+            <span class="form-message"></span>
         </div>
-        <div class="form-group">
-            <label class="form-label" for="image_2">Link image 2</label>
-            <input type="text" class="form-control" id="image_2" value="{{product.image_2}}" name="image_2">
+        <div class="form-group-crud">
+            <label class="form-label" for="category">Category</label>
+            <select name="category" class="form-control-crud">
+                {{#each category}}
+                    <option value="{{this.title}}">{{this.title}}</option>
+                {{/each}}
+            </select>
         </div>
-        <div class="form-group">
-            <label class="form-label" for="image_3">Link image 3</label>
-            <input type="text" class="form-control" id="image_3" value="{{product.image_3}}" name="image_3">
-        </div>
-        <div class="form-group">
-            <label class="form-label" for="image_4">Link image 4</label>
-            <input type="text" class="form-control" id="image_4" value="{{product.image_4}}" name="image_4">
-        </div>
-    </div>
-    <div class="right">
-        <div class="form-group">
-            <label class="form-label" for="oldPrice">Old price</label>
-            <input type="text" class="form-control" id="oldPrice" value="{{product.oldPrice}}" name="oldPrice"></input>
-        </div>
-        <div class="form-group">
-            <label class="form-label" for="newPrice">New price</label>
-            <input type="text" class="form-control" id="newPrice" value="{{product.newPrice}}" name="newPrice">
-        </div>
-        <div class="form-group">
-            <label class="form-label" for="saled">Saled</label>
-            <input type="text" class="form-control" id="saled" value="{{product.saled}}" name="saled">
-        </div>
-        <div class="form-group">
+        <div class="form-group-crud">
             <label class="form-label" for="origin">Origin</label>
-            <input type="text" class="form-control" id="origin"value="{{product.origin}}" name="origin">
+            <select name="origin" class="form-control-crud">
+                {{#each origin}}
+                    <option value="{{this.title}}">{{this.title}}</option>
+                {{/each}}
+            </select>
         </div>
-        <div class="form-group">
-            <label class="form-label" for="saleOff">SaleOff</label>
-            <input type="text" class="form-control" id="saleOff"value="{{product.saleOff}}" name="">
+        <div class="form-group-crud">
+            <label class="form-label" for="oldPrice">Old Price</label>
+            <input id="oldprice" type="text" value="{{product.oldPrice}}" onkeyup="addDotNumber()" name="oldPrice" class="form-control-crud number" placeholder="VND" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
+            <span class="form-message"></span>
         </div>
-        <div class="form-group">
+        <div class="form-group-crud">
+            <label class="form-label" for="newPrice">New Price</label>
+            <input id="newprice" type="text" value="{{product.newPrice}}" onkeyup="addDotNumber()" name="newPrice" class="form-control-crud number" placeholder="VND" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
+            <span class="form-message"></span>
+        </div>
+        <div class="form-group-crud">
+            <label class="form-label" for="saleOff">Discount</label>
+            <input id="saleOff" type="text" value="{{product.saleOff}}" name="saleOff" class="form-control-crud" placeholder="45" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+            <span class="form-message"></span>
+        </div>
+        <div class="form-group-crud">
+            <label class="form-label" for="saled">Saled</label>
+            <input id="saled" type="text" value="{{product.saled}}" onkeyup="addDotNumber()" name="saled" class="form-control-crud number" placeholder="Saled" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
+            <span class="form-message"></span>
+        </div>
+        <div class="form-group-crud">
             <label class="form-label" for="reviews">Reviews</label>
-            <input type="text" class="form-control" id="reviews"value="{{product.reviews}}" name="reviews">
+            <input id="reviews" type="text" name="reviews" value="{{product.reviews}}" onkeyup="addDotNumber()" class="form-control-crud number" placeholder="Reviews" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/>
+            <span class="form-message"></span>
         </div>
-    </div>
+
+        <div class="form-group-crud">
+            <label class="form-label" for="">Image 1</label>
+            <input id="image" type="text" name="image" value="{{product.image_1}}" class="form-control-crud" placeholder="Image"/>
+            <span class="form-message"></span>
+        </div>
+        <div class="form-group-crud">
+            <label class="form-label" for="">Image 2</label>
+            <input id="image_2" type="text" name="image_2" value="{{product.image_2}}"  class="form-control-crud" placeholder="Image"/>
+            <span class="form-message"></span>
+        </div>
+        <div class="form-group-crud">
+            <label class="form-label" for="">Image 3</label>
+            <input id="image_3" type="text" name="image_3" value="{{product.image_3}}" class="form-control-crud" placeholder="Image"/>
+            <span class="form-message"></span>
+        </div>
+        <div class="form-group-crud">
+            <label class="form-label" for="">Image 4</label>
+            <input id="image_4" type="text" name="image_4" value="{{product.image_4}}" class="form-control-crud" placeholder="Image"/>
+            <span class="form-message"></span>
+        </div>
         <button type="submit" class="btn btn-primary">Save changes</button>
     </form>
 </div>
